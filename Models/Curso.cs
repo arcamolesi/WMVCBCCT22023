@@ -7,12 +7,14 @@ namespace WMVCBCCT22023.Models
     public class Curso
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Display(Name = "ID")]
         public int id { get; set; }
 
-        [Required]
-        [StringLength(25)]
+        [Required(ErrorMessage = "Campo descrião é obrigatório")]
+        [StringLength(35)]
+        [Display(Name = "Descrição")]
         public string descricao { get; set; }
 
-        public int teste { get; set; }
     }
 }

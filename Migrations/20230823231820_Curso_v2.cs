@@ -5,10 +5,28 @@
 namespace WMVCBCCT22023.Migrations
 {
     /// <inheritdoc />
-    public partial class CursoAtulizado : Migration
+    public partial class Curso_v2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropColumn(
+                name: "teste",
+                table: "Cursos");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "descricao",
+                table: "Cursos",
+                type: "nvarchar(35)",
+                maxLength: 35,
+                nullable: false,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(25)",
+                oldMaxLength: 25);
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
                 name: "descricao",
@@ -26,24 +44,6 @@ namespace WMVCBCCT22023.Migrations
                 type: "int",
                 nullable: false,
                 defaultValue: 0);
-        }
-
-        /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropColumn(
-                name: "teste",
-                table: "Cursos");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "descricao",
-                table: "Cursos",
-                type: "nvarchar(35)",
-                maxLength: 35,
-                nullable: false,
-                oldClrType: typeof(string),
-                oldType: "nvarchar(25)",
-                oldMaxLength: 25);
         }
     }
 }

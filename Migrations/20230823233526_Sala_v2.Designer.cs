@@ -11,8 +11,8 @@ using WMVCBCCT22023.Models;
 namespace WMVCBCCT22023.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20230816234348_Salas")]
-    partial class Salas
+    [Migration("20230823233526_Sala_v2")]
+    partial class Sala_v2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,13 +52,13 @@ namespace WMVCBCCT22023.Migrations
 
                     b.Property<string>("descricao")
                         .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasMaxLength(35)
+                        .HasColumnType("nvarchar(35)");
 
                     b.Property<int>("quantidade")
                         .HasColumnType("int");
 
-                    b.Property<string>("status")
+                    b.Property<string>("situacao")
                         .IsRequired()
                         .HasColumnType("nvarchar(1)");
 
