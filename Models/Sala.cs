@@ -1,29 +1,30 @@
-﻿using Microsoft.AspNetCore.Components.Forms;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WMVCBCCT22023.Models
 {
-    enum Situacao { Livre, Ocupada, Reserva, Manutencao}
+    public enum Situacao { Livre, Ocupada, Reservada, Manutencao };
 
-    [Table("Salas")]
+    [Table("Sala")]
     public class Sala
     {
         [Key]
-        [Display(Name ="ID")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Display(Description = "id", Name = "ID: ")]
         public int id { get; set; }
 
-        [Required (ErrorMessage = "Campo descrição é obrigatório...")]
-        [StringLength(35)]
-        [Display(Name = "Descrição")]
+        [Required(ErrorMessage = "Campo descrição não pode ser nulo")]
+        [StringLength(40)]
+        [Display(Description = "descrição", Name = "Descrição: ")]
         public string descricao { get; set; }
 
-        [Display(Name = "Quantidade")]
-       [MinLength (0, ErrorMessage = "valor maior que zero é obrigatório")]
+        [Required(AllowEmptyStrings = true)]
+        [Display(Description = "quantidade", Name = "Quantidade: ")]
+        [Range(1, 25, ErrorMessage = "Valor entre 1 ..25")]
         public int quantidade { get; set; }
 
-        [Display(Name = "Situação")]
+        [Required(ErrorMessage = "Campo é obrigatório")]
+        [Display(Description = "situação", Name = "Situação: ")]
         public int situacao { get; set; }
-
     }
 }
