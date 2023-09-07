@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>pagina labs</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Adicionar Novo Lab</a>
 </p>
 <table class="table">
     <thead>
@@ -26,7 +26,8 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @{int qtde = 0;} 
+        @foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.descricao)
@@ -42,7 +43,11 @@
                 <a asp-action="Details" asp-route-id="@item.id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
             </td>
-        </tr>
+                @{
+                    qtde = qtde + 1;
+                }
+            </tr>
 }
     </tbody>
 </table>
+<h3> Total de registros impressos: @qtde</h3>
