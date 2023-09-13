@@ -47,6 +47,16 @@ namespace WMVCBCCT22023.Controllers
         // GET: Alunos/Create
         public IActionResult Create()
         {
+           var periodo = Enum.GetValues(typeof(Periodo))
+                                      .Cast<Periodo>()
+                                      .Select(e => new SelectListItem
+                                      {
+                                          Value = e.ToString(),
+                                          Text = e.ToString()
+                                      });
+
+
+            ViewBag.periodo = periodo;
             ViewData["cursoID"] = new SelectList(_context.Cursos, "id", "descricao");
             return View();
         }
@@ -64,6 +74,13 @@ namespace WMVCBCCT22023.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            var periodo = Enum.GetValues(typeof(Periodo)).Cast<Periodo>()
+          .Select(e => new SelectListItem
+          {
+              Value = e.ToString(),
+              Text = e.ToString()
+          });
+            ViewBag.periodo = periodo;
             ViewData["cursoID"] = new SelectList(_context.Cursos, "id", "descricao", aluno.cursoID);
             return View(aluno);
         }

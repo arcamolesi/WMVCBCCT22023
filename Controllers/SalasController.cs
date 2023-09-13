@@ -45,6 +45,15 @@ namespace WMVCBCCT22023.Controllers
         // GET: Salas/Create
         public IActionResult Create()
         {
+            var status = Enum.GetValues(typeof(Situacao))
+                 .Cast<Situacao>()
+                 .Select(e => new SelectListItem
+                 {
+                     Value = e.ToString(),
+                     Text = e.ToString()
+                 });
+            ViewBag.status = status;
+
             return View();
         }
 

@@ -34,7 +34,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="periodo" class="control-label"></label>
-                <input asp-for="periodo" class="form-control" />
+                <select asp-for="periodo" asp-items="ViewBag.periodo" class="form-control">
+                    @*<option selected="selected" value="">Selecione um Elemento</option>*@
+                </select>
                 <span asp-validation-for="periodo" class="text-danger"></span>
             </div>
             <div class="form-group">

@@ -25,6 +25,6 @@ namespace WMVCBCCT22023.Models
 
         [Required(ErrorMessage = "Campo é obrigatório")]
         [Display(Description = "situação", Name = "Situação: ")]
-        public int situacao { get; set; }
+        public Situacao situacao { get; set; }
     }
 }

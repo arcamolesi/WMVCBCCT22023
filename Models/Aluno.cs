@@ -36,6 +36,7 @@ namespace WMVCBCCT22023.Models
         public Curso curso { get; set; }
 
         [Display(Name = "Período")]
+      //  [Range(0,3)]
         public int periodo { get; set; }
 
     }
